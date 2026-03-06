@@ -1,67 +1,120 @@
-﻿
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Photo‑Portfolio</title>
+<title>Photo-Portfolio</title>
 <style>
     /* reset */
-    *{margin:0;padding:0;box-sizing:border-box;}
-    html,body{width:100%;height:100%;overflow:hidden;background:#000;color:#fff;
-        font-family:Arial,Helvetica,sans-serif;}
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
     /* containers */
-    #intro,#main{position:absolute;inset:0;}
-    #intro video{width:100%;height:100%;object-fit:cover;}
-    #main{display:none;perspective:1200px;/* for 3D tilt */}
+    #intro, #main { position: absolute; inset: 0; }
+    #intro video { width: 100%; height: 100%; object-fit: cover; }
+    #main { display: none; perspective: 1200px; }
+
     /* particles */
-    #particles{position:absolute;inset:0;z-index:1;}
+    #particles { position: absolute; inset: 0; z-index: 1; }
+
     /* cell image */
-    #cellWrapper{
-    position:relative;
-    z-index:2;
-    width:70vw;
-    max-width:600px;
-    aspect-ratio:1/1;   /* makes it perfectly square */
-    margin:auto;
-    top:50%;
-    transform:translateY(-50%);
-    transition:transform .6s;
-    #cellWrapper:hover{transform:translateY(-50%);}  #cellImage{
-    width:100%;
-    height:100%;
-    object-fit:cover;      /* keeps image nicely cropped */
-    display:block;
-    border-radius:50%;     /* makes it round */
-    filter:drop-shadow(0 0 20px rgba(0,200,255,.6));
-}
+    #cellWrapper {
+        position: relative;
+        z-index: 2;
+        width: 70vw;
+        max-width: 600px;
+        aspect-ratio: 1 / 1;
+        margin: auto;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: transform .6s;
+    }
+
+    #cellWrapper:hover {
+        transform: translateY(-50%) scale(1.01);
+    }
+
+    #cellImage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 50%;
+        filter: drop-shadow(0 0 20px rgba(0, 200, 255, .6));
+    }
+
     /* hotspots */
-    .hotspot{position:absolute;cursor:pointer;transition:box-shadow .3s;border-radius:50%;}
-    .hotspot:hover{box-shadow:0 0 15px 5px rgba(0,200,255,.7);}
+    .hotspot {
+        position: absolute;
+        cursor: pointer;
+        transition: box-shadow .3s;
+        border-radius: 50%;
+        background: transparent;
+    }
+    .hotspot:hover { box-shadow: 0 0 15px 5px rgba(0, 200, 255, .7); }
+
     /* positions (adjust to match your image) */
-    #nucleus{width:22%;height:22%;top:38%;left:39%;}
-    #mitochondria{width:16%;height:14%;top:48%;left:18%;}
-    #golgi{width:22%;height:14%;top:58%;left:58%;}
-    #ribosomes{width:28%;height:22%;top:22%;left:52%;}
-    #lysosome{width:12%;height:12%;top:63%;left:30%;}
-    .hotspot{background:transparent;}
+    #nucleus { width: 22%; height: 22%; top: 38%; left: 39%; }
+    #mitochondria { width: 16%; height: 14%; top: 48%; left: 18%; }
+    #golgi { width: 22%; height: 14%; top: 58%; left: 58%; }
+    #ribosomes { width: 28%; height: 22%; top: 22%; left: 52%; }
+    #lysosome { width: 12%; height: 12%; top: 63%; left: 30%; }
+
     /* popups */
-    .popup{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.8);
-        width:80vw;max-width:500px;padding:20px;background:rgba(0,0,0,.6);
-        border:2px solid #0ff;backdrop-filter:blur(10px);border-radius:12px;
-        box-shadow:0 0 20px rgba(0,200,255,.7);
-        opacity:0;pointer-events:none;transition:opacity .4s,transform .4s;z-index:20;}
-    .popup.active{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1);}
-    .popup h2{margin-bottom:10px;color:#0ff;font-size:1.4em;}
-    .popup .close{position:absolute;top:10px;right:10px;width:24px;height:24px;
-        cursor:pointer;background:#000;border:1px solid #0ff;border-radius:50%;
-        display:flex;align-items:center;justify-content:center;color:#0ff;
-        font-weight:bold;transition:background .2s,color .2s;}
-    .popup .close:hover{background:#0ff;color:#000;}
+    .popup {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(.8);
+        width: 80vw;
+        max-width: 500px;
+        padding: 20px;
+        background: rgba(0, 0, 0, .6);
+        border: 2px solid #0ff;
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(0, 200, 255, .7);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .4s, transform .4s;
+        z-index: 20;
+    }
+    .popup.active {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    .popup h2 { margin-bottom: 10px; color: #0ff; font-size: 1.4em; }
+    .popup .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        background: #000;
+        border: 1px solid #0ff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #0ff;
+        font-weight: bold;
+        transition: background .2s, color .2s;
+    }
+    .popup .close:hover { background: #0ff; color: #000; }
+
     /* responsive */
-    @media(max-width:600px){
-        #cellWrapper{width:95vw;}
-        .popup{width:90vw;}
+    @media (max-width: 600px) {
+        #cellWrapper { width: 95vw; }
+        .popup { width: 90vw; }
     }
 </style>
 </head>
@@ -114,50 +167,72 @@
 </div>
 
 <script>
-// transition after 8 seconds (or video end)
 const intro = document.getElementById('intro');
 const main = document.getElementById('main');
 const video = document.getElementById('bgVideo');
-function showMain(){
-    intro.style.display='none';
-    main.style.display='block';
+
+let initialized = false;
+function showMain() {
+    if (initialized) return;
+    initialized = true;
+    intro.style.display = 'none';
+    main.style.display = 'block';
     initParticles();
 }
+
 video.addEventListener('ended', showMain);
-setTimeout(showMain,8000);
+setTimeout(showMain, 8000);
 
 // hotspot & popup logic
-document.querySelectorAll('.hotspot').forEach(h=>{
-    h.addEventListener('click',()=>{
-        const popup=document.getElementById('popup-'+h.dataset.target);
-        if(popup) popup.classList.add('active');
+document.querySelectorAll('.hotspot').forEach(h => {
+    h.addEventListener('click', () => {
+        const popup = document.getElementById('popup-' + h.dataset.target);
+        if (popup) popup.classList.add('active');
     });
 });
-document.querySelectorAll('.popup .close').forEach(btn=>{
-    btn.addEventListener('click',e=>{
+
+document.querySelectorAll('.popup .close').forEach(btn => {
+    btn.addEventListener('click', e => {
         e.target.closest('.popup').classList.remove('active');
     });
 });
 
-// simple floating particles
-function initParticles(){
-    const c=document.getElementById('particles'),ctx=c.getContext('2d');
-    let ps=[];
-    function resize(){c.width=window.innerWidth;c.height=window.innerHeight;}
-    function create(){ps.push({x:Math.random()*c.width,y:c.height+10,
-        size:Math.random()*2+1,speed:Math.random()*0.5+.2});}
-    function anim(){
-        ctx.clearRect(0,0,c.width,c.height);
-        ps.forEach((p,i)=>{p.y-=p.speed;
-            ctx.fillStyle='rgba(80,200,255,0.2)';
-            ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fill();
-            if(p.y<-5)ps.splice(i,1);
+function initParticles() {
+    const c = document.getElementById('particles');
+    const ctx = c.getContext('2d');
+    const ps = [];
+
+    function resize() {
+        c.width = window.innerWidth;
+        c.height = window.innerHeight;
+    }
+
+    function create() {
+        ps.push({
+            x: Math.random() * c.width,
+            y: c.height + 10,
+            size: Math.random() * 2 + 1,
+            speed: Math.random() * 0.5 + 0.2
         });
-        if(Math.random()<0.3) create();
+    }
+
+    function anim() {
+        ctx.clearRect(0, 0, c.width, c.height);
+        ps.forEach((p, i) => {
+            p.y -= p.speed;
+            ctx.fillStyle = 'rgba(80,200,255,0.2)';
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fill();
+            if (p.y < -5) ps.splice(i, 1);
+        });
+        if (Math.random() < 0.3) create();
         requestAnimationFrame(anim);
     }
-    resize();anim();
-    window.addEventListener('resize',resize);
+
+    resize();
+    anim();
+    window.addEventListener('resize', resize);
 }
 </script>
 </body>
