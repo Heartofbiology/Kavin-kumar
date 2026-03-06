@@ -156,6 +156,51 @@ cursor:pointer;
 .certificates img:hover{
 transform:scale(1.05);
 }
+/* MILESTONE TIMELINE */
+
+.timeline{
+position:relative;
+margin-top:20px;
+padding-left:30px;
+}
+
+.timeline::before{
+content:"";
+position:absolute;
+left:10px;
+top:0;
+bottom:0;
+width:3px;
+background:#0ff;
+}
+
+.milestone{
+position:relative;
+margin-bottom:20px;
+padding:10px 15px;
+background:rgba(0,0,0,0.5);
+border:1px solid #0ff;
+border-radius:8px;
+box-shadow:0 0 10px rgba(0,200,255,0.5);
+}
+
+.milestone::before{
+content:"";
+position:absolute;
+left:-22px;
+top:15px;
+width:12px;
+height:12px;
+background:#0ff;
+border-radius:50%;
+box-shadow:0 0 8px rgba(0,255,255,0.8);
+}
+
+.milestone h3{
+color:#0ff;
+font-size:16px;
+margin-bottom:5px;
+}
 
 </style>
 </head>
@@ -208,11 +253,36 @@ Contact:
 
 </div>
 
-    <div class="popup" id="popup-mitochondria">
-        <div class="close">&times;</div>
-        <h2>Achievements</h2>
-        <p>Awards, milestones, recognitions, etc.</p>
-    </div>
+<div class="popup" id="popup-mitochondria">
+<div class="close">&times;</div>
+<h2>Achievements</h2>
+
+<div class="timeline">
+
+<div class="milestone">
+<h3>2026</h3>
+<p>Published 3 Research Papers in Biotechnology</p>
+</div>
+
+<div class="milestone">
+<h3>2025</h3>
+<p>Best Oral Presenter Award – Biotechnology Conference</p>
+</div>
+
+<div class="milestone">
+<h3>2025</h3>
+<p>Best Product Development Award</p>
+</div>
+
+<div class="milestone">
+<h3>2024</h3>
+<p>Completed Advanced Training in Microbial Research</p>
+</div>
+
+</div>
+
+</div>
+
     <div class="popup" id="popup-golgi">
         <div class="close">&times;</div>
         <h2>Projects</h2>
