@@ -201,6 +201,52 @@ color:#0ff;
 font-size:16px;
 margin-bottom:5px;
 }
+.certificate-gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:15px;
+margin-top:20px;
+max-height:420px;
+overflow-y:auto;
+}
+
+.certificate-gallery img{
+width:100%;
+border-radius:8px;
+border:2px solid #0ff;
+box-shadow:0 0 10px rgba(0,200,255,0.6);
+cursor:pointer;
+transition:transform .3s;
+}
+
+.certificate-gallery img:hover{
+transform:scale(1.05);
+}
+
+/* FULLSCREEN VIEW */
+
+.fullscreen-view{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:999;
+}
+
+.fullscreen-view img{
+max-width:90%;
+max-height:90%;
+border:3px solid #0ff;
+border-radius:10px;
+box-shadow:0 0 25px #0ff;
+}
+
+</style>
 /* CERTIFICATE GALLERY */
 
 .certificate-gallery{
@@ -300,28 +346,86 @@ Contact:
 
 <div class="popup" id="popup-mitochondria">
 <div class="close">&times;</div>
+
 <h2>Achievements</h2>
 
 <div class="timeline">
 
 <div class="milestone">
-<h3>2026</h3>
-<p>Published 3 Research Papers in Biotechnology</p>
+<h3>Academic Qualification</h3>
+<p>
+Completed <b>B.Sc. Microbiology</b> at Dr. N.G.P. Arts and Science College, Coimbatore with First Class CGPA.
+Currently pursuing <b>M.Sc. (Hons.) Microbiology</b> at Lovely Professional University, Punjab.
+</p>
 </div>
 
 <div class="milestone">
-<h3>2025</h3>
-<p>Best Oral Presenter Award – Biotechnology Conference</p>
+<h3>Presentation Awards</h3>
+<p>
+Received <b>3 Best Oral Presentation Awards</b> and <b>2 Best Poster Presentation Awards</b> at various scientific conferences.
+</p>
 </div>
 
 <div class="milestone">
-<h3>2025</h3>
-<p>Best Product Development Award</p>
+<h3>Leadership & Discipline</h3>
+<p>
+Served as <b>PC – NCC Army Wing</b> during school education (2014–2020), demonstrating leadership, discipline, and teamwork.
+</p>
 </div>
 
 <div class="milestone">
-<h3>2024</h3>
-<p>Completed Advanced Training in Microbial Research</p>
+<h3>Internship Experience</h3>
+<p>
+Completed internships at:
+<br>• Themis International Pvt. Ltd. (Biotechnology)
+<br>• KMCH Hospital, Tamil Nadu
+<br>• ICAR Sugarcane Breeding Institute, Tamil Nadu
+</p>
+</div>
+
+<div class="milestone">
+<h3>Research Publications</h3>
+<p>
+Published <b>3 research papers</b> in reputed international journals and <b>2 review publications</b>.
+</p>
+</div>
+
+<div class="milestone">
+<h3>Innovative Projects</h3>
+<p>
+Worked on multidisciplinary projects including:
+<br>• Rapid Soil Respiration Analysis
+<br>• Rapid NPK Testing System with Android Application
+<br>
+Received the <b>Best Product Award</b> for this innovation.
+</p>
+</div>
+
+<div class="milestone">
+<h3>Scientific Discoveries</h3>
+<p>
+Developed and researched innovative concepts including:
+<br>• E. coli sensitive cardboard biosensor
+<br>• Tridax based wound healing ointment
+<br>• Banana leaf residue medium for Spirulina cultivation
+<br>• Biofilm pack for prawn recovery
+</p>
+</div>
+
+<div class="milestone">
+<h3>Scientific Participation</h3>
+<p>
+Participated in <b>18 scientific conferences</b> and <b>8 hackathons / idea pitching competitions</b>.
+</p>
+</div>
+
+<div class="milestone">
+<h3>Personal Strengths</h3>
+<p>
+Quick learner with strong communication skills, public speaking ability, leadership qualities, and multidisciplinary research interest.
+</p>
+</div>
+
 </div>
 
 </div>
